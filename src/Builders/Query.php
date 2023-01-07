@@ -164,8 +164,10 @@ class Query implements QueryBuilderInterface
         $this->table($databaseAndTable);
         return $this;
     }
+
     public function delete(): self
     {
+        $this->isDelete = true;
         return $this;
     }
     public function set(string|array $columnName, string $value): self
