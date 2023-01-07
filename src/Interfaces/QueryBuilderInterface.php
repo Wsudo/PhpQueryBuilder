@@ -15,7 +15,7 @@ interface QueryBuilderInterface
     public function from(string|array $databaseAndTable): self;
     public function delete(): self;
     public function set(string|array $columnName, string $value): self;
-    public function insert(string|array $columns , string $value = null): self;
+    public function insert(string|array $column , string $value = null): self;
     public function where(string|\Closure|Future|QueryBuilderInterface $column, $operator, $value, string $bool): self;
     public function orWhere(string|\Closure|Future|QueryBuilderInterface $column, $operator, $value): self;
     public function whereNot($column, $value, string $bool): self;
