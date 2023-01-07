@@ -5,6 +5,12 @@ use Wsudo\PhpQueryBuilder\Throwables\InvalidValueError;
 
 trait Limit
 {
+    /**
+     * set limit items for SELECT query type
+     * @param int $number number of items per index
+     * @throws InvalidValueError
+     * @return self
+     */
     public function limit(int $number): self
     {
         if($number < 1)
