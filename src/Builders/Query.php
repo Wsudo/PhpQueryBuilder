@@ -30,6 +30,8 @@ class Query implements QueryBuilderInterface
     public $joins;
     public array $selectedColumns = [];
 
+    public bool $isCount = false;
+
     /**
      * set the working database for QueryBuilder
      * 
