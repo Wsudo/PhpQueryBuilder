@@ -165,6 +165,12 @@ class Query implements QueryBuilderInterface
         return $this;
     }
 
+    /**
+     * set the query type as DELETE query
+     * 
+     * NOTE: this method used just for change select query to the delete query
+     * @return Query
+     */
     public function delete(): self
     {
         $this->isDelete = true;
