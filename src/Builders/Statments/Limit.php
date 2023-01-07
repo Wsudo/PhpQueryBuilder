@@ -20,6 +20,13 @@ trait Limit
         $this->limit =$number;
         return $this;
     }
+
+    /**
+     * set the offset number of rows for SELECT query type
+     * @param int $number number of rows offset
+     * @throws InvalidValueError
+     * @return self
+     */
     public function offset(int $number = 0): self
     {
         if($number < 0)
