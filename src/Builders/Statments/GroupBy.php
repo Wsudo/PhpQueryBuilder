@@ -6,6 +6,14 @@ use Wsudo\PhpQueryBuilder\Throwables\InvalidValueError;
 
 trait GroupBy
 {
+    /**
+     * add groupBy column statment into the SELECT query
+     * 
+     * NODE: this will be change Query type to the SELECT Query
+     * @param string|array $columns
+     * @throws InvalidValueError
+     * @return self
+     */
     public function groupBy(string|array $columns): self
     {
         $this->isSelect = true;
@@ -27,7 +35,7 @@ trait GroupBy
                 $this->groupBy($column);
             }
         }
-        
+
         return $this;
     }
 }
