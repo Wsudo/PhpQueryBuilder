@@ -152,8 +152,11 @@ class Query implements QueryBuilderInterface
         $this->isCount = true;
         return $this;
     }
+
+    
     public function from(string|array $databaseAndTable): self
     {
+        $this->table($databaseAndTable);
         return $this;
     }
     public function delete(): self
