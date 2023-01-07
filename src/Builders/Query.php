@@ -227,6 +227,31 @@ class Query implements QueryBuilderInterface
 
     public function insert(string|array $column , string $value = null): self
     {
+        $this->isInsert = true;
+
+        if(is_string($column))
+        {
+            $column = trim($column);
+
+            if(empty($column))
+            {
+                throw new InvalidValueError("invalid column name passed to " . __METHOD__);
+            }
+            if(!is_null($value) && !is_string($value))
+            {
+                throw new InvalidValueError("invalid value type passed to " . __METHOD__);
+            }
+
+            $this->updatedData[$column] = $value;
+        }
+        
+        if(is_array($column) && !empty($column))
+        {
+            foreach($column as $name => $value)
+            {
+                $this->set($name, $value);
+            }
+        }
         return $this;
     }
     public function exportWhereStatments(): array
