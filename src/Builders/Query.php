@@ -4,6 +4,7 @@ namespace Wsudo\PhpQueryBuilder\Builders;
 
 use Amp\Future;
 use Amp\Internal\FutureState;
+use Wsudo\PhpQueryBuilder\Builders\Statments\GroupBy;
 use Wsudo\PhpQueryBuilder\Builders\Statments\Having;
 use Wsudo\PhpQueryBuilder\Builders\Statments\Join;
 use Wsudo\PhpQueryBuilder\Builders\Statments\Limit;
@@ -20,6 +21,7 @@ class Query implements QueryBuilderInterface
     use OrderBy;
     use Join;
     use Limit;
+    use GroupBy;
     public $database;
     public $table;
     public $wheres;
