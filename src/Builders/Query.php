@@ -31,6 +31,8 @@ class Query implements QueryBuilderInterface
     public array $selectedColumns = [];
     public array $updatedData = [];
     public array $insertedData = [];
+    public int $limit;
+    public int $offset;
 
     public bool $isCount = false;
     public bool $isDelete = false;
