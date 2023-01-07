@@ -5,7 +5,7 @@ namespace Wsudo\PhpQueryBuilder;
 use Wsudo\PhpQueryBuilder\Interfaces\ReadyQueryInterface;
 
 /**
- * A ReadyQuery Built By QueryBuilder
+ * A Ready Query Built By QueryBuilder
  * @implements ReadyQueryInterface
  */
 class ReadyQuery implements ReadyQueryInterface
