@@ -222,7 +222,7 @@ class Query implements QueryBuilderInterface
 
         return $this;
     }
-    public function insert(array $data): self
+    public function insert(string|array $columns , string $value = null): self
     {
         return $this;
     }
