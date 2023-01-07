@@ -4,6 +4,7 @@ namespace Wsudo\PhpQueryBuilder\Builders;
 
 use Amp\Future;
 use Amp\Internal\FutureState;
+use InvalidArgumentException;
 use Wsudo\PhpQueryBuilder\Builders\Statments\GroupBy;
 use Wsudo\PhpQueryBuilder\Builders\Statments\Having;
 use Wsudo\PhpQueryBuilder\Builders\Statments\Join;
@@ -177,8 +178,33 @@ class Query implements QueryBuilderInterface
         $this->isDelete = true;
         return $this;
     }
-    public function set(string|array $columnName, string $value): self
+
+    public function set(string|array $columnName, string $value = null): self
     {
+        if(is_string($columnName))
+        {
+            $columnName = trim($columnName);
+            
+            if(empty($columnName))
+            {
+                throw new InvalidValueError("invalid column name passed to " . __METHOD__);
+            }
+            if(!is_null($value) && !is_string($value))
+            {
+                throw new InvalidValueError("invalid value type passed to " . __METHOD__);
+            }
+
+            $this->updatedRowData[$columnName] = $value;
+        }
+        
+        if(is_array($columnName) && !empty($columnName))
+        {
+            foreach($columnName as $name => $value)
+            {
+                $this->set($name, $value);
+            }
+        }
+
         return $this;
     }
     public function insert(array $data): self
