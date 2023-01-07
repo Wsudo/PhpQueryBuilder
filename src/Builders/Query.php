@@ -4,6 +4,7 @@ namespace Wsudo\PhpQueryBuilder\Builders;
 
 use Amp\Future;
 use Amp\Internal\FutureState;
+use Wsudo\PhpQueryBuilder\Builders\Statments\Having;
 use Wsudo\PhpQueryBuilder\Builders\Statments\Where;
 use Wsudo\PhpQueryBuilder\Interfaces\QueryBuilderInterface;
 use Wsudo\PhpQueryBuilder\ReadyQuery;
@@ -12,6 +13,7 @@ use Wsudo\PhpQueryBuilder\Types\DatabaseType;
 class Query implements QueryBuilderInterface
 {
     use Where;
+    use Having;
     public $database;
     public $table;
     public $wheres;
@@ -51,10 +53,7 @@ class Query implements QueryBuilderInterface
         return $this;
     }
     
-    public function having(string $functionName, $arguments = [], string|array $operator, string|array $values): self
-    {
-        return $this;
-    }
+    
     public function orderBy(string|array $columns): self
     {
         return $this;

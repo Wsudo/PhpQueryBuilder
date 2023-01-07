@@ -1,8 +1,6 @@
 <?php
 
 namespace Wsudo\PhpQueryBuilder\Builders\Statments;
-use Amp\Future;
-use Wsudo\PhpQueryBuilder\Interfaces\QueryBuilderInterface;
 
 trait Having
 {
