@@ -29,6 +29,14 @@ class Query implements QueryBuilderInterface
     public $havings;
     public $joins;
 
+    /**
+     * set the working database for QueryBuilder
+     * 
+     * 
+     * @param string|array $databaseName  'database' or 'database.table' or ['database' , 'table']
+     * @throws InvalidValueError
+     * @return Query self instance
+     */
     public function database(string|array $databaseName): self
     {
         if(is_string($databaseName))
