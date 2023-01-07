@@ -6,6 +6,7 @@ use Wsudo\PhpQueryBuilder\Interfaces\ReadyQueryInterface;
 
 /**
  * A ReadyQuery Built By QueryBuilder
+ * @implements ReadyQueryInterface
  */
 class ReadyQuery implements ReadyQueryInterface
 {
