@@ -29,6 +29,7 @@ class Query implements QueryBuilderInterface
     public $havings;
     public $joins;
     public array $selectedColumns = [];
+    public array $updatedRowData = [];
 
     public bool $isCount = false;
     public bool $isDelete = false;
