@@ -12,6 +12,7 @@ use Wsudo\PhpQueryBuilder\Builders\Statments\OrderBy;
 use Wsudo\PhpQueryBuilder\Builders\Statments\Where;
 use Wsudo\PhpQueryBuilder\Interfaces\QueryBuilderInterface;
 use Wsudo\PhpQueryBuilder\ReadyQuery;
+use Wsudo\PhpQueryBuilder\Throwables\InvalidValueError;
 use Wsudo\PhpQueryBuilder\Types\DatabaseType;
 
 class Query implements QueryBuilderInterface
@@ -30,6 +31,38 @@ class Query implements QueryBuilderInterface
 
     public function database(string|array $databaseName): self
     {
+        if(is_string($databaseName))
+        {
+            if(str_contains("." , $databaseName))
+            {
+                $explode = explode(".", $databaseName);
+                if(count($explode) != 2 || empty($explode[0]) || empty($explode[1]))
+                {
+                    throw new InvalidValueError("invalid database name given in " . __METHOD__);
+                }
+                $this->database($explode[0]);
+                $this->table($explode[1]);
+                return $this;
+            }
+
+            $this->database = $databaseName;
+        }
+
+        if(is_array($databaseName))
+        {
+            if(
+                !isset($databaseName[0]) || 
+                !isset($databaseName[1]) || 
+                empty($databaseName[0]) ||
+                empty($databaseName[1])
+            )
+            {
+                throw new InvalidValueError("invalid database name given in " . __METHOD__ . " it should be like ['database' , 'table']");
+            }
+            $this->database = $databaseName[0];
+            $this->table($databaseName[1]);
+        }
+
         return $this;
     }
     public function table(string|array $tableName): self
