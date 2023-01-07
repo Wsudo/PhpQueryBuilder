@@ -269,10 +269,7 @@ class Query implements QueryBuilderInterface
         }
         return $this;
     }
-    public function exportWhereStatments(): array
-    {
-        return [];
-    }
+    
     public function build(DatabaseType $databaseType): ReadyQuery
     {
         return (new ReadyQuery());
