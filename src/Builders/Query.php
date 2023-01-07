@@ -29,7 +29,7 @@ class Query implements QueryBuilderInterface
     public array $havings =[];
     public array $joins =[];
     public array $selectedColumns = [];
-    public array $updatedRowData = [];
+    public array $updatedData = [];
 
     public bool $isCount = false;
     public bool $isDelete = false;
@@ -195,7 +195,7 @@ class Query implements QueryBuilderInterface
     public function set(string|array $columnName, string $value = null): self
     {
         $this->isUpdate = true;
-        
+
         if(is_string($columnName))
         {
             $columnName = trim($columnName);
@@ -209,7 +209,7 @@ class Query implements QueryBuilderInterface
                 throw new InvalidValueError("invalid value type passed to " . __METHOD__);
             }
 
-            $this->updatedRowData[$columnName] = $value;
+            $this->updatedData[$columnName] = $value;
         }
         
         if(is_array($columnName) && !empty($columnName))
