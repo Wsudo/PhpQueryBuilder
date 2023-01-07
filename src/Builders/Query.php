@@ -75,6 +75,21 @@ class Query implements QueryBuilderInterface
     }
     public function table(string|array $tableName): self
     {
+        if(is_array($tableName))
+        {
+            $this->database($tableName);
+        }
+
+        if(is_string($tableName))
+        {
+            if(str_contains("." , $tableName))
+            {
+                $this->database($tableName);
+                return $this;
+            }
+            $this->table = $tableName;
+        }
+
         return $this;
     }
     public function select(string|array $columns): self
