@@ -9,5 +9,6 @@ interface ReadyQueryInterface
     public function setQueryString(string $queryString): self;
     public function getBindings(): array;
     public function setBindings(array $bindings): self;
+    public function hasBindings(): bool;
 }
 

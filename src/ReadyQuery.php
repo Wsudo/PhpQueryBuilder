@@ -36,4 +36,9 @@ class ReadyQuery implements ReadyQueryInterface
         $this->bindings = $bindings;
         return $this;
     }
+
+    public function hasBindings(): bool
+    {
+        return count($this->bindings) > 0;
+    }
 }
