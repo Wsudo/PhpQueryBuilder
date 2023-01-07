@@ -34,7 +34,7 @@ interface QueryBuilderInterface
     public function orWhereNotNull($column): self;
     public function whereSub(\Closure|Future|QueryBuilderInterface $queryBuilder, string $bool): self;
     public function orWhereSub(\Closure|Future|QueryBuilderInterface $queryBuilder): self;
-    public function having(string $functionName,array|string|int|float $arguments , string|array $operator, string|array $values): self;
+    public function havingFunc(string $functionName,array|string|int|float $arguments, string|array $operator, string|array $values): self;
     public function orderBy(string|array $columns): self;
     public function orderByDesc(string|array $columns): self;
     public function orderByAsc(string|array $columns): self;
