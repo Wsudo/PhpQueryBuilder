@@ -35,6 +35,7 @@ class Query implements QueryBuilderInterface
     public int $offset;
     public array $orders = [];
     public string $orderType;
+    public array $groups = [];
 
     public bool $isCount = false;
     public bool $isDelete = false;
