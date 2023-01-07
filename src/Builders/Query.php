@@ -30,10 +30,12 @@ class Query implements QueryBuilderInterface
     public array $joins =[];
     public array $selectedColumns = [];
     public array $updatedData = [];
+    public array $insertedData = [];
 
     public bool $isCount = false;
     public bool $isDelete = false;
     public bool $isUpdate = false;
+    public bool $isInsert = false;
 
     /**
      * set the working database for QueryBuilder
