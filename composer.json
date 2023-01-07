@@ -14,5 +14,7 @@
             "email": "wsudophp@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "amphp/amp": "^3.0"
+    }
 }
