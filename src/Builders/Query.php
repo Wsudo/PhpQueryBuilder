@@ -28,6 +28,7 @@ class Query implements QueryBuilderInterface
     public $wheres;
     public $havings;
     public $joins;
+    public array $selectedColumns = [];
 
     /**
      * set the working database for QueryBuilder
