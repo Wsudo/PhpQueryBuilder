@@ -1,0 +1,18 @@
+{
+    "name": "wsudo/php-query-builder",
+    "description": "A multifunctional PHP query builder with the ability to create queries for SQL databases (MySQL, SQL Lite, Postgres SQL, SQL Server) and the ability to create schemas, selection queries, inserts, Update and delete And Support Async PHP via amphp project",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Wsudo\\PhpQueryBuilder\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "wsudo",
+            "email": "wsudophp@gmail.com"
+        }
+    ],
+    "require": {}
+}
