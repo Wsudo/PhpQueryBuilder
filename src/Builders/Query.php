@@ -25,9 +25,9 @@ class Query implements QueryBuilderInterface
     use GroupBy;
     public string $database;
     public string $table;
-    public array $wheres;
-    public array $havings;
-    public array $joins;
+    public array $wheres =[];
+    public array $havings =[];
+    public array $joins =[];
     public array $selectedColumns = [];
     public array $updatedRowData = [];
 
