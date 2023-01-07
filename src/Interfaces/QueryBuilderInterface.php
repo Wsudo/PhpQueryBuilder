@@ -8,8 +8,8 @@ use Wsudo\PhpQueryBuilder\Types\DatabaseType;
 
 interface QueryBuilderInterface
 {
-    public function database(string $databaseName): self;
-    public function table(string $tableName): self;
+    public function database(string|array $databaseName): self;
+    public function table(string|array $tableName): self;
     public function select(string|array $columns): self;
     public function count():self;
     public function from(string|array $databaseAndTable): self;

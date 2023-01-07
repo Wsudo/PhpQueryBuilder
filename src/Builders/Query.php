@@ -28,11 +28,11 @@ class Query implements QueryBuilderInterface
     public $havings;
     public $joins;
 
-    public function database(string $databaseName): self
+    public function database(string|array $databaseName): self
     {
         return $this;
     }
-    public function table(string $tableName): self
+    public function table(string|array $tableName): self
     {
         return $this;
     }
