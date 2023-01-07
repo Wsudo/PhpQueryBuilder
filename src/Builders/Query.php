@@ -33,6 +33,7 @@ class Query implements QueryBuilderInterface
 
     public bool $isCount = false;
     public bool $isDelete = false;
+    public bool $isUpdate = false;
 
     /**
      * set the working database for QueryBuilder
