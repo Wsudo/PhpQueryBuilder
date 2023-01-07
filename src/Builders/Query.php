@@ -179,12 +179,23 @@ class Query implements QueryBuilderInterface
         return $this;
     }
 
+    /**
+     * set row datas for UPDATE query
+     * 
+     * NOTE: when you passed $columnName as key-value array method will not use $value argument
+     * and it will use array values to set row-columns values
+     * 
+     * @param string|array $columnName 'name' or ['name' => 'John']
+     * @param string|null $value value of the column
+     * @throws InvalidValueError
+     * @return Query
+     */
     public function set(string|array $columnName, string $value = null): self
     {
         if(is_string($columnName))
         {
             $columnName = trim($columnName);
-            
+
             if(empty($columnName))
             {
                 throw new InvalidValueError("invalid column name passed to " . __METHOD__);
