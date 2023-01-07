@@ -100,7 +100,12 @@ class Query implements QueryBuilderInterface
         return $this;
     }
 
-
+    /**
+     * set which column(s) do you want to select
+     * @param string|array $columns 'id' or ['id' ,'name']
+     * @throws InvalidValueError
+     * @return Query
+     */
     public function select(string|array $columns): self
     {
         if(is_string($columns))
@@ -127,7 +132,7 @@ class Query implements QueryBuilderInterface
                 $this->select($column);
             }
         }
-        
+
         return $this;
     }
     public function count(): self
