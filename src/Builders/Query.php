@@ -4,7 +4,6 @@ namespace Wsudo\PhpQueryBuilder\Builders;
 
 use Amp\Future;
 use Amp\Internal\FutureState;
-use InvalidArgumentException;
 use Wsudo\PhpQueryBuilder\Builders\Statments\GroupBy;
 use Wsudo\PhpQueryBuilder\Builders\Statments\Having;
 use Wsudo\PhpQueryBuilder\Builders\Statments\Join;
