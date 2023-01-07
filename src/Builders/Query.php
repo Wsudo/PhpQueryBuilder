@@ -153,7 +153,11 @@ class Query implements QueryBuilderInterface
         return $this;
     }
 
-    
+    /**
+     * set database and table which you want to select rows from !
+     * @param string|array $databaseAndTable 'database.table' or 'table' or ['database' , 'table']
+     * @return Query
+     */
     public function from(string|array $databaseAndTable): self
     {
         $this->table($databaseAndTable);
