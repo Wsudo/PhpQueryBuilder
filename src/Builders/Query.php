@@ -62,10 +62,7 @@ class Query implements QueryBuilderInterface
     
     
     
-    public function groupBy(string|array $columns): self
-    {
-        return $this;
-    }
+    
 
     public function exportWhereStatments(): array
     {
