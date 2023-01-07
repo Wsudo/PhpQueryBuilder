@@ -99,8 +99,35 @@ class Query implements QueryBuilderInterface
 
         return $this;
     }
+
+
     public function select(string|array $columns): self
     {
+        if(is_string($columns))
+        {
+            $columns = trim($columns);
+
+            if(empty($columns))
+            {
+                throw new InvalidValueError("invalid column name passed to the " . __METHOD__);
+            }
+
+            if(in_array($columns , $this->selectedColumns))
+            {
+                return $this;
+            }
+
+            $this->selectedColumns[] = $columns;
+        }
+
+        if(is_array($columns))
+        {
+            foreach($columns as $column)
+            {
+                $this->select($column);
+            }
+        }
+        
         return $this;
     }
     public function count(): self
