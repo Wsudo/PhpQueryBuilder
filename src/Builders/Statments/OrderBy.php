@@ -6,6 +6,16 @@ use Wsudo\PhpQueryBuilder\Throwables\InvalidValueError;
 
 trait OrderBy
 {
+    /**
+     * set orderby columns for SELECT Query Type
+     * 
+     * NOTE: this will be modify query Type to the SELECT query type
+     * 
+     * 
+     * @param string|array $columns 'id' or ['id' , 'age']
+     * @throws InvalidValueError
+     * @return self
+     */
     public function orderBy(string|array $columns = ['id']): self
     {
         if(is_string($columns))
