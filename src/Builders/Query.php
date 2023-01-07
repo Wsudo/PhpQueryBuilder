@@ -225,6 +225,21 @@ class Query implements QueryBuilderInterface
         return $this;
     }
 
+    /**
+     * add insert data to the Query Builder
+     * 
+     * NOTE: there will use for INSERT data 
+     * 
+     * NOTE: it will change Query Type to the INSERT query Type
+     * 
+     * NOTE: when you passed $column as key-value array method will not use $value argument
+     * and it will use array values to set row-columns values
+     * 
+     * @param string|array $column 'name' or ['name' => 'John']
+     * @param string|null $value $value value of the column
+     * @throws InvalidValueError
+     * @return Query
+     */
     public function insert(string|array $column , string $value = null): self
     {
         $this->isInsert = true;
