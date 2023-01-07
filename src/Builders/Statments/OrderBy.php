@@ -43,6 +43,14 @@ trait OrderBy
         return $this;
     }
 
+    /**
+     * set orderby columns and order type to DESC for SELECT Query Type
+     * 
+     * NOTE: this will be modify query Type to the SELECT query type
+     * 
+     * @param string|array $columns 'id' or ['id' , 'age']
+     * @return self
+     */
     public function orderByDesc(string|array $columns): self
     {
         $this->orderType = "DESC";
