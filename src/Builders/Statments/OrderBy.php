@@ -58,6 +58,7 @@ trait OrderBy
     }
     public function orderByAsc(string|array $columns): self
     {
-        return $this;
+        $this->orderType = "ASC";
+        return $this->orderBy($columns);
     }
 }
