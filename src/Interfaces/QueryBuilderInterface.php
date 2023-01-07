@@ -3,6 +3,7 @@
 namespace Wsudo\PhpQueryBuilder\Interfaces;
 
 use Amp\Future;
+use Wsudo\PhpQueryBuilder\ReadyQuery;
 use Wsudo\PhpQueryBuilder\Types\DatabaseType;
 
 interface QueryBuilderInterface
@@ -51,7 +52,7 @@ interface QueryBuilderInterface
     public function crossJoinWhere(string $table, $first, $operator, $second):self;
 
     public function exportWhereStatments(): array;
-    public function build(DatabaseType $databaseType);
-    public function asyncBuild(DatabaseType $databaseType);
+    public function build(DatabaseType $databaseType): ReadyQuery;
+    public function asyncBuild(DatabaseType $databaseType): Future;
 
 }
