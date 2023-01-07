@@ -33,6 +33,8 @@ class Query implements QueryBuilderInterface
     public array $insertedData = [];
     public int $limit;
     public int $offset;
+    public array $orders = [];
+    public string $orderType;
 
     public bool $isCount = false;
     public bool $isDelete = false;
