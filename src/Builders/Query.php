@@ -138,6 +138,14 @@ class Query implements QueryBuilderInterface
         return $this;
     }
 
+    /**
+     * set query is for counting rows
+     * 
+     * IMPORTANT : this method will be clean all selected Columns from the queryString
+     * IMPORTANT : this method will be use just for counting the rows in the table and nothing else !!!
+     * 
+     * @return Query
+     */
     public function count(): self
     {
         $this->selectedColumns = [];
