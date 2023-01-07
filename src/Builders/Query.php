@@ -185,6 +185,8 @@ class Query implements QueryBuilderInterface
      * NOTE: when you passed $columnName as key-value array method will not use $value argument
      * and it will use array values to set row-columns values
      * 
+     * NOTE: this method will modify query type to UPDATE query type
+     * 
      * @param string|array $columnName 'name' or ['name' => 'John']
      * @param string|null $value value of the column
      * @throws InvalidValueError
@@ -192,6 +194,8 @@ class Query implements QueryBuilderInterface
      */
     public function set(string|array $columnName, string $value = null): self
     {
+        $this->isUpdate = true;
+        
         if(is_string($columnName))
         {
             $columnName = trim($columnName);
