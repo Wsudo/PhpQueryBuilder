@@ -60,12 +60,6 @@ class Query implements QueryBuilderInterface
     {
         return $this;
     }
-    
-    
-    
-    
-    
-
     public function exportWhereStatments(): array
     {
         return [];
