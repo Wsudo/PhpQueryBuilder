@@ -137,8 +137,11 @@ class Query implements QueryBuilderInterface
 
         return $this;
     }
+
     public function count(): self
     {
+        $this->selectedColumns = [];
+        $this->isCount = true;
         return $this;
     }
     public function from(string|array $databaseAndTable): self
