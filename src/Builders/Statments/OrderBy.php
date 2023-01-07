@@ -56,6 +56,15 @@ trait OrderBy
         $this->orderType = "DESC";
         return $this->orderBy($columns);
     }
+
+    /**
+     * set orderby columns and order type to ASC for SELECT Query Type
+     * 
+     * NOTE: this will be modify query Type to the SELECT query type
+     * 
+     * @param string|array $columns 'id' or ['id' , 'age']
+     * @return self
+     */
     public function orderByAsc(string|array $columns): self
     {
         $this->orderType = "ASC";
