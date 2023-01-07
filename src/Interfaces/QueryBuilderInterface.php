@@ -50,8 +50,6 @@ interface QueryBuilderInterface
     public function leftJoinWhere(string $table, $first, $operator, $second):self;
     public function rightJoinWhere(string $table, $first, $operator, $second):self;
     public function crossJoinWhere(string $table, $first, $operator, $second):self;
-
-    public function exportWhereStatments(): array;
     public function build(DatabaseType $databaseType): ReadyQuery;
     public function asyncBuild(DatabaseType $databaseType): Future;
 
