@@ -23,11 +23,11 @@ class Query implements QueryBuilderInterface
     use Join;
     use Limit;
     use GroupBy;
-    public $database;
-    public $table;
-    public $wheres;
-    public $havings;
-    public $joins;
+    public string $database;
+    public string $table;
+    public array $wheres;
+    public array $havings;
+    public array $joins;
     public array $selectedColumns = [];
     public array $updatedRowData = [];
 
