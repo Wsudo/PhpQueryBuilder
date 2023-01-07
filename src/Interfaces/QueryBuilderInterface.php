@@ -39,7 +39,7 @@ interface QueryBuilderInterface
     public function orderByDesc(string|array $columns): self;
     public function orderByAsc(string|array $columns): self;
     public function limit(int $number):self;
-    public function offset(int $offset = 0):self;
+    public function offset(int $number):self;
     public function groupBy(string|array $columns): self;
     public function join(string $table, $first, $operator, $second, $type, $where = false):self;
     public function innerJoin(string $table, $first, $operator, $second):self;

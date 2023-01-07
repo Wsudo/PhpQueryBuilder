@@ -20,8 +20,13 @@ trait Limit
         $this->limit =$number;
         return $this;
     }
-    public function offset(int $offset = 0): self
+    public function offset(int $number = 0): self
     {
+        if($number < 0)
+        {
+            throw new InvalidValueError("offset number MUST be bigger then -1 , invalid passed to " .__METHOD__);
+        }
+        $this->offset =$number;
         return $this;
     }
 }
