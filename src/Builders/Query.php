@@ -73,6 +73,12 @@ class Query implements QueryBuilderInterface
 
         return $this;
     }
+
+    /**
+     * set the working table to the QueryBuilder
+     * @param string|array $tableName 'my_table' or 'database.table' or ['database' , 'table']
+     * @return Query
+     */
     public function table(string|array $tableName): self
     {
         if(is_array($tableName))
