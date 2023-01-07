@@ -4,6 +4,10 @@ namespace Wsudo\PhpQueryBuilder\Builders\Statments;
 
 trait Join
 {
+    public function join(string $table, $first, $operator, $second, $type, $where = false): self
+    {
+        return $this;
+    }
     public function innerJoin(string $table, $first, $operator, $second): self
     {
         return $this;

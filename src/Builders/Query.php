@@ -69,11 +69,6 @@ class Query implements QueryBuilderInterface
     {
         return $this;
     }
-    public function join(string $table, $first, $operator, $second, $type, $where = false): self
-    {
-        return $this;
-    }
-    
 
     public function exportWhereStatments(): array
     {
