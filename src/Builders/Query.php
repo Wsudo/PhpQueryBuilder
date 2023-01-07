@@ -31,6 +31,7 @@ class Query implements QueryBuilderInterface
     public array $selectedColumns = [];
 
     public bool $isCount = false;
+    public bool $isDelete = false;
 
     /**
      * set the working database for QueryBuilder
