@@ -211,7 +211,7 @@ class Query implements QueryBuilderInterface
                 throw new InvalidValueError("invalid value type passed to " . __METHOD__);
             }
 
-            $this->insertedData[$column] = $value;
+            $this->updatedData[$column] = $value;
         }
         
         if(is_array($column) && !empty($column))
@@ -257,7 +257,7 @@ class Query implements QueryBuilderInterface
                 throw new InvalidValueError("invalid value type passed to " . __METHOD__);
             }
 
-            $this->updatedData[$column] = $value;
+            $this->insertedData[$column] = $value;
         }
         
         if(is_array($column) && !empty($column))
