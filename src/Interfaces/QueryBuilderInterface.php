@@ -14,7 +14,7 @@ interface QueryBuilderInterface
     public function count():self;
     public function from(string|array $databaseAndTable): self;
     public function delete(): self;
-    public function set(string|array $columnName, string $value): self;
+    public function set(string|array $column, string $value): self;
     public function insert(string|array $column , string $value = null): self;
     public function where(string|\Closure|Future|QueryBuilderInterface $column, $operator, $value, string $bool): self;
     public function orWhere(string|\Closure|Future|QueryBuilderInterface $column, $operator, $value): self;

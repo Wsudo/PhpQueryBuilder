@@ -194,15 +194,15 @@ class Query implements QueryBuilderInterface
      * @throws InvalidValueError
      * @return Query
      */
-    public function set(string|array $columnName, string $value = null): self
+    public function set(string|array $column, string $value = null): self
     {
         $this->isUpdate = true;
 
-        if(is_string($columnName))
+        if(is_string($column))
         {
-            $columnName = trim($columnName);
+            $column = trim($column);
 
-            if(empty($columnName))
+            if(empty($column))
             {
                 throw new InvalidValueError("invalid column name passed to " . __METHOD__);
             }
@@ -211,12 +211,12 @@ class Query implements QueryBuilderInterface
                 throw new InvalidValueError("invalid value type passed to " . __METHOD__);
             }
 
-            $this->updatedData[$columnName] = $value;
+            $this->updatedData[$column] = $value;
         }
         
-        if(is_array($columnName) && !empty($columnName))
+        if(is_array($column) && !empty($column))
         {
-            foreach($columnName as $name => $value)
+            foreach($column as $name => $value)
             {
                 $this->set($name, $value);
             }
