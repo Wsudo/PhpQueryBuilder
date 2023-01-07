@@ -59,14 +59,7 @@ class Query implements QueryBuilderInterface
     
     
     
-    public function limit(int $number): self
-    {
-        return $this;
-    }
-    public function offset(int $offset = 0): self
-    {
-        return $this;
-    }
+    
     public function groupBy(string|array $columns): self
     {
         return $this;
