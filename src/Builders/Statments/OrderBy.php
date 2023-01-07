@@ -18,6 +18,8 @@ trait OrderBy
      */
     public function orderBy(string|array $columns = ['id']): self
     {
+        $this->isSelect = true;
+        
         if(is_string($columns))
         {
             $columns = trim($columns);
