@@ -42,9 +42,11 @@ trait OrderBy
 
         return $this;
     }
+
     public function orderByDesc(string|array $columns): self
     {
-        return $this;
+        $this->orderType = "DESC";
+        return $this->orderBy($columns);
     }
     public function orderByAsc(string|array $columns): self
     {
