@@ -6,6 +6,7 @@ use Amp\Future;
 use Amp\Internal\FutureState;
 use Wsudo\PhpQueryBuilder\Builders\Statments\Having;
 use Wsudo\PhpQueryBuilder\Builders\Statments\Join;
+use Wsudo\PhpQueryBuilder\Builders\Statments\Limit;
 use Wsudo\PhpQueryBuilder\Builders\Statments\OrderBy;
 use Wsudo\PhpQueryBuilder\Builders\Statments\Where;
 use Wsudo\PhpQueryBuilder\Interfaces\QueryBuilderInterface;
@@ -18,6 +19,7 @@ class Query implements QueryBuilderInterface
     use Having;
     use OrderBy;
     use Join;
+    use Limit;
     public $database;
     public $table;
     public $wheres;
