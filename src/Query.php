@@ -4,5 +4,6 @@ namespace Wsudo\PhpQueryBuilder;
 
 final class Query
 {
+    private static $storeQueriesEnabled = false;
     private static array $Queries = [];
 }
