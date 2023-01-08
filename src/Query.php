@@ -121,4 +121,24 @@ final class Query
         return count(self::$storedQueries) > 0;
     }
 
+    /**
+     * set tagget Queries
+     * @param array $taggedQueries
+     * @return Query
+     */
+    public static function setTaggetQueries(array $taggedQueries) : self
+    {
+        self::$taggedQueries = $taggedQueries;
+        return new static ();
+    }
+
+    /**
+     * get taggedQueries
+     * @return array
+     */
+    public static function getTaggetQueries():array
+    {
+        return self::$taggedQueries;
+    }
+
 }
