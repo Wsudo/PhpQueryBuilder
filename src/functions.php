@@ -1,6 +1,8 @@
 <?php
 
-
+/**
+ * name space to hold functions
+ */
 namespace Wsudo\PhpQueryBuilder
 {
 
