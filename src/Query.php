@@ -75,15 +75,24 @@ final class Query
         return self::$maxStoredQueries;
     }
 
+    /**
+     * set Stored Queries
+     * @param array $storedQueries
+     * @return Query
+     */
     public static function setStoredQueries(array $storedQueries):self
     {
         self::$storedQueries = $storedQueries;
         return new static ();
     }
 
+    /**
+     * get Stored Queries
+     * @return array
+     */
     public static function getStoredQueries():array
     {
         return self::$storedQueries;
     }
-    
+
 }
