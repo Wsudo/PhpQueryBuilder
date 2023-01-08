@@ -14,6 +14,12 @@ final class Query
     private static bool $storeQueriesEnabled = false;
 
     /**
+     * set enable storing Transactions queries or not
+     * @var bool
+     */
+    private static bool $storeTransactionsEnabled = false;
+
+    /**
      * maximum number of Queries to store
      * 
      * NOTE: it will pop the oldest Query from storedQueries
