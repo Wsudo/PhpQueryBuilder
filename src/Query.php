@@ -154,7 +154,7 @@ final class Query
      * @param string|int $name
      * @param mixed $ignore
      * @throws Exception if tagged Query does not exists and $ignore = true will throw error
-     * @return BuilderInterface|BuildersQuery|bool false if tagged Query does not exists
+     * @return BuildersQuery|BuildersQuery|bool false if tagged Query does not exists
      */
     public static function tagged(string|int $name , $ignore = true):BuildersQuery|bool
     {
@@ -176,9 +176,9 @@ final class Query
      * 
      * 
      * @param string|int $name
-     * @param BuilderInterface|null $queryBuilder
+     * @param BuildersQuery|null $queryBuilder
      * @param mixed $replace
-     * @return BuilderInterface
+     * @return BuildersQuery
      */
     public static function tag(string|int $name , BuildersQuery $queryBuilder = null , $replace = false):BuildersQuery
     {
