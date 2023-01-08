@@ -97,6 +97,11 @@ final class Query
         return self::$storedQueries;
     }
 
+    /**
+     * add new query to the stored Query list
+     * @param BuilderInterface $query
+     * @return Query
+     */
     public static function addStoredQuery(BuilderInterface $query):self
     {
         if(count(self::$storedQueries) >= self::$maxStoredQueries)
@@ -107,6 +112,10 @@ final class Query
         return new static ();
     }
 
+    /**
+     * check has any storedQuery or not
+     * @return bool
+     */
     public static function hasStoredQuery():bool
     {
         return count(self::$storedQueries) > 0;
