@@ -6,7 +6,7 @@ use Amp\Future;
 use Wsudo\PhpQueryBuilder\ReadyQuery;
 use Wsudo\PhpQueryBuilder\Types\DatabaseType;
 
-interface QueryBuilderInterface
+interface QueryBuilderInterface extends BuilderInterface
 {
     public function database(string|array $databaseName): self;
     public function table(string|array $tableName): self;
