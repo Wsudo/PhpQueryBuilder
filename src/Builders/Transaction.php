@@ -4,7 +4,7 @@ namespace Wsudo\PhpQueryBuilder\Builders;
 
 use Amp\Future;
 use Amp\Internal\FutureState;
-use Wsudo\PhpQueryBuilder\Builders\Query as BuildersQuery;
+use Wsudo\PhpQueryBuilder\Builders\Query as QueryBuilder;
 use Wsudo\PhpQueryBuilder\Interfaces\TransactionInterface;
 use Wsudo\PhpQueryBuilder\ReadyQuery;
 use Wsudo\PhpQueryBuilder\Types\DatabaseType;
@@ -13,13 +13,32 @@ use Wsudo\PhpQueryBuilder\Types\TransactionType;
 class Transaction implements TransactionInterface
 {
 
+    /**
+     * list of transaction queries
+     * @var array<QueryBuilder>
+     */
     protected array $queries = [];
+    
+    /**
+     * check transaction is commited or not
+     * @var bool
+     */
     protected bool $commited = false;
+
+    /**
+     * type of the transaction
+     * 
+     * NOTE: read Wsudo\PhpQueryBuilder\Types\TransactionType
+     * @var \Wsudo\PhpQueryBuilder\Types\TransactionType
+     */
     protected TransactionType $transactionType;
 
-    public function __construct(TransactionType $transactionType = TransactionType::REPEATABLE_READ)
+    public function __construct(TransactionType $transactionType = null)
     {
-        $this->transactionType = $transactionType;
+        if(!is_null($transactionType))
+        {
+            $this->transactionType = $transactionType;
+        }
     }
 
     public function setQueries(array $queries):self
@@ -60,7 +79,7 @@ class Transaction implements TransactionInterface
         return count($this->queries) > 0;
     }
 
-    public function query(BuildersQuery $query): self 
+    public function query(QueryBuilder $query): self 
     {
         $this->queries[] = $query;
         return $this;
