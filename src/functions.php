@@ -7,6 +7,8 @@ namespace Wsudo\PhpQueryBuilder
     use Amp\Cancellation;
     use Amp\Future;
 
+    use Amp\Internal\Cancellable;
+    use Amp\TimeoutCancellation;
     use function Amp\Future\awaitAll as ampAwaitAll;
     use function Amp\async as ampAsync;
 
@@ -26,6 +28,11 @@ namespace Wsudo\PhpQueryBuilder
     function async(\Closure $callable , ...$args)
     {
         return ampAsync($callable, ...$args);
+    }
+
+    function timeout(float $time , string $message = "operation timeouted"):TimeoutCancellation
+    {
+        return new TimeoutCancellation( $time , $message);
     }
 }
 
