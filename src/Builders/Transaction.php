@@ -7,6 +7,7 @@ use Amp\Internal\FutureState;
 use Wsudo\PhpQueryBuilder\Builders\Query as QueryBuilder;
 use Wsudo\PhpQueryBuilder\Interfaces\TransactionInterface;
 use Wsudo\PhpQueryBuilder\ReadyQuery;
+use Wsudo\PhpQueryBuilder\Throwables\Exception;
 use Wsudo\PhpQueryBuilder\Types\DatabaseType;
 use Wsudo\PhpQueryBuilder\Types\TransactionType;
 
@@ -136,6 +137,10 @@ class Transaction implements TransactionInterface
      */
     public function commit(TransactionType $transactionType) :self
     {
+        if($this->commited)
+        {
+            throw new Exception("transaction was commited");
+        }
         $this->transactionType = $transactionType;
         $this->commited = true;
         return $this;
