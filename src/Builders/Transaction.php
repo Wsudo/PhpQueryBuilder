@@ -124,6 +124,11 @@ class Transaction implements TransactionInterface
      */
     public function query(QueryBuilder $query): self 
     {
+        if($this->commited)
+        {
+            throw new Exception("transaction was commited and you are not allow to add new queries");
+        }
+
         $this->queries[] = $query;
         return $this;
     }
@@ -133,6 +138,7 @@ class Transaction implements TransactionInterface
      * 
      * NOTE: after commiting transaction you are not allow to add new Queries to transaction Queries !
      * @param TransactionType $transactionType
+     * @throws Exception
      * @return Transaction
      */
     public function commit(TransactionType $transactionType) :self
