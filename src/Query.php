@@ -15,6 +15,7 @@ final class Query
      * 
      * NOTE: it will pop the oldest Query from storedQueries
      * @var int
+     * 
      */
     private static int $maxStoredQueries = 10;
 
@@ -52,5 +53,16 @@ final class Query
     public static function getStoreQueriesEnabled():bool
     {
         return self::$storeQueriesEnabled;
+    }
+
+    public static function setMaxStoredQueries(int $maximumNumber):self
+    {
+        self::$maxStoredQueries = $maximumNumber;
+        return new static ();
+    }
+    
+    public static function getMaxStoredQueries():int
+    {
+        return self::$maxStoredQueries;
     }
 }
