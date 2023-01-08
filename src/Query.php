@@ -330,6 +330,13 @@ final class Query
         return self::addStoredQuery(new BuildersQuery());
     }
 
+    /**
+     * create new Transaction and return it out
+     * 
+     * NOTE: if store Tranaction Enabled it will be store in the list of transactions
+     * @param TransactionType|null $transactionType
+     * @return Transaction
+     */
     public static function newTransaction(TransactionType $transactionType = null):Transaction
     {
         return self::addStoredTransaction(new Transaction($transactionType));
