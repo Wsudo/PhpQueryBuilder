@@ -25,7 +25,7 @@ namespace Wsudo\PhpQueryBuilder
         }
     }
 
-    function async(\Closure $callable , ...$args)
+    function async(\Closure $callable , ...$args):Future
     {
         return ampAsync($callable, ...$args);
     }
