@@ -45,6 +45,14 @@ final class Query
     private static array $storedQueries = [];
 
     /**
+     * stored Queries for debug or something like that
+     * 
+     * NOTE: it will Transactions Queries
+     * @var array
+     */
+    private static array $storedTransactions = [];
+
+    /**
      * storage of tagged Queries
      * 
      * tagged Queries are usefull to use Queries Again and Update them
