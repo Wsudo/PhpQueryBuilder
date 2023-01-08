@@ -11,6 +11,8 @@ namespace Wsudo\PhpQueryBuilder
 
     use Amp\Internal\Cancellable;
     use Amp\TimeoutCancellation;
+    use Wsudo\PhpQueryBuilder\Builders\Query;
+    use Wsudo\PhpQueryBuilder\Query as PhpQueryBuilderQuery;
     use Wsudo\PhpQueryBuilder\Throwables\Exception;
     use function Amp\Future\awaitAll as ampAwaitAll;
     use function Amp\async as ampAsync;
@@ -57,6 +59,21 @@ namespace Wsudo\PhpQueryBuilder
     function timeout(float $time , string $message = "operation timed out"):TimeoutCancellation
     {
         return new TimeoutCancellation( $time , $message);
+    }
+
+    /**
+     * return new fullQueryBuilder/tagged QueryBuilder instance
+     * @param string|int $tagName
+     * @return Query
+     */
+    function query(string|int $tagName = null):Query
+    {
+        if($tagName == null)
+        {
+            return PhpQueryBuilderQuery::newFullQueryBuilderInterface();
+        }
+
+        return PhpQueryBuilderQuery::tag($tagName);
     }
 }
 
