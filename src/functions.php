@@ -16,7 +16,7 @@ namespace Wsudo\PhpQueryBuilder
     use function Amp\async as ampAsync;
 
     /**
-     * await a future or list of futures to be execute as blocking
+     * await for a future to be execute
      * @param array|Future $futures
      * @param Cancellation|null $cancellation
      * @throws Exception
