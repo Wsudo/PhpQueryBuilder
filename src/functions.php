@@ -33,7 +33,7 @@ namespace Wsudo\PhpQueryBuilder
         return ampAsync($callable, ...$args);
     }
 
-    function timeout(float $time , string $message = "operation timeouted"):TimeoutCancellation
+    function timeout(float $time , string $message = "operation timed out"):TimeoutCancellation
     {
         return new TimeoutCancellation( $time , $message);
     }
