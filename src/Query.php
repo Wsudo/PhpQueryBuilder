@@ -55,12 +55,21 @@ final class Query
         return self::$storeQueriesEnabled;
     }
 
+    /**
+     * set maximum number of Stored Queries
+     * @param int $maximumNumber
+     * @return Query
+     */
     public static function setMaxStoredQueries(int $maximumNumber):self
     {
         self::$maxStoredQueries = $maximumNumber;
         return new static ();
     }
     
+    /**
+     * get maximum number of Stored Queries
+     * @return int
+     */
     public static function getMaxStoredQueries():int
     {
         return self::$maxStoredQueries;
