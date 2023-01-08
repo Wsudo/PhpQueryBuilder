@@ -33,4 +33,24 @@ final class Query
      * @var array
      */
     private static array $taggedQueries = [];
+
+    /**
+     * set StoreQueriesEnabled
+     * @param bool $enabled
+     * @return Query
+     */
+    public static function setStoreQueriesEnabled(bool $enabled = true):self
+    {
+        self::$storeQueriesEnabled = $enabled;
+        return new static ();
+    }
+
+    /**
+     * get StoreQueriesEnabled
+     * @return bool
+     */
+    public static function getStoreQueriesEnabled():bool
+    {
+        return self::$storeQueriesEnabled;
+    }
 }
