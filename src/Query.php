@@ -3,6 +3,7 @@
 namespace Wsudo\PhpQueryBuilder;
 
 use Wsudo\PhpQueryBuilder\Builders\Query as BuildersQuery;
+use Wsudo\PhpQueryBuilder\Builders\Transaction;
 use Wsudo\PhpQueryBuilder\Throwables\Exception;
 
 final class Query
@@ -81,6 +82,26 @@ final class Query
     }
 
     /**
+     * set Store Transactions Enabled
+     * @param bool $enabled
+     * @return Query
+     */
+    public static function setStoreTransactionsEnabled(bool $enabled = true):self
+    {
+        self::$storeTransactionsEnabled = $enabled;
+        return new static ();
+    }
+
+    /**
+     * get Store Transactions Enabled
+     * @return bool
+     */
+    public static function getStoreTransactionsEnabled():bool
+    {
+        return self::$storeTransactionsEnabled;
+    }
+
+    /**
      * set maximum number of Stored Queries
      * @param int $maximumNumber
      * @return Query
@@ -98,6 +119,26 @@ final class Query
     public static function getMaxStoredQueries():int
     {
         return self::$maxStoredQueries;
+    }
+
+    /**
+     * set maximum number of Stored Transactions Queries
+     * @param int $maximumNumber
+     * @return Query
+     */
+    public static function setMaxStoredTransactions(int $maximumNumber):self
+    {
+        self::$maxStoredTransactions = $maximumNumber;
+        return new static ();
+    }
+    
+    /**
+     * get maximum number of Transaction Queries
+     * @return int
+     */
+    public static function getMaxStoredTransactions():int
+    {
+        return self::$maxStoredTransactions;
     }
 
     /**
@@ -148,6 +189,56 @@ final class Query
     public static function hasStoredQuery():bool
     {
         return count(self::$storedQueries) > 0;
+    }
+
+    /**
+     * set Stored Queries
+     * @param array $storedQueries
+     * @return self
+     */
+    public static function setStoredTransactions(array $storedTransactions):self
+    {
+        self::$storedTransactions = $storedTransactions;
+        return new static ();
+    }
+
+    /**
+     * get Stored Transactions
+     * @return array
+     */
+    public static function getStoredTransactions():array
+    {
+        return self::$storedTransactions;
+    }
+
+    /**
+     * add new Transaction to the stored Query list
+     * @param Transaction $query
+     * @return Transaction
+     */
+    public static function addStoredTransaction(Transaction $query):Transaction
+    {
+
+        if(!self::$storeTransactionsEnabled)
+        {
+            return $query;
+        }
+
+        if(count(self::$storedTransactions) >= self::$maxStoredTransactions)
+        {
+            array_shift(self::$storedTransactions);
+        }
+        self::$storedTransactions[] = $query;
+        return self::$storedTransactions[count(self::$storedTransactions) -1];
+    }
+
+    /**
+     * check has any Transaction or not
+     * @return bool
+     */
+    public static function hasStoredTransaction():bool
+    {
+        return count(self::$storedTransactions) > 0;
     }
 
     /**
@@ -236,6 +327,11 @@ final class Query
     public static function newFullQueryBuilderInterface():BuildersQuery
     {
         return self::addStoredQuery(new BuildersQuery());
+    }
+
+    public static function newTransaction():Transaction
+    {
+        return self::addStoredTransaction(new Transaction());
     }
 
     public static function debug()
