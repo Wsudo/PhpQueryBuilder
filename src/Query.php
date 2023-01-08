@@ -74,4 +74,16 @@ final class Query
     {
         return self::$maxStoredQueries;
     }
+
+    public static function setStoredQueries(array $storedQueries):self
+    {
+        self::$storedQueries = $storedQueries;
+        return new static ();
+    }
+
+    public static function getStoredQueries():array
+    {
+        return self::$storedQueries;
+    }
+    
 }
