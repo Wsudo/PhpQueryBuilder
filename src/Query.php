@@ -28,6 +28,8 @@ final class Query
 
     /**
      * storage of tagged Queries
+     * 
+     * tagged Queries are usefull to use Queries Again and Update them
      * @var array
      */
     private static array $taggedQueries = [];
