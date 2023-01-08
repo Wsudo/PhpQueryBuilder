@@ -22,11 +22,19 @@ final class Query
     /**
      * maximum number of Queries to store
      * 
-     * NOTE: it will pop the oldest Query from storedQueries
+     * NOTE: it will shit the oldest Query from storedQueries
      * @var int
      * 
      */
     private static int $maxStoredQueries = 10;
+
+    /**
+     * maximum number of Transactions Queries to store
+     * 
+     * NOTE: it will shit the oldest Transactions Query from storedQueries
+     * @var int
+     */
+    private static int $maxStoredTransactions = 10;
 
     /**
      * stored Queries for debug or something like that
