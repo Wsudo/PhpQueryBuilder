@@ -79,6 +79,11 @@ namespace Wsudo\PhpQueryBuilder
         return PhpQueryBuilderQuery::tag($tagName);
     }
 
+    /**
+     * create new transaction builder
+     * @param TransactionType|null $transactionType type of the transaction isolate level
+     * @return Transaction
+     */
     function transaction(TransactionType $transactionType = null):Transaction
     {
         return PhpQueryBuilderQuery::newTransaction($transactionType);
