@@ -2,6 +2,8 @@
 
 namespace Wsudo\PhpQueryBuilder;
 
+use Wsudo\PhpQueryBuilder\Interfaces\BuilderInterface;
+
 final class Query
 {
     /**
@@ -93,6 +95,21 @@ final class Query
     public static function getStoredQueries():array
     {
         return self::$storedQueries;
+    }
+
+    public static function addStoredQuery(BuilderInterface $query):self
+    {
+        if(count(self::$storedQueries) >= self::$maxStoredQueries)
+        {
+            array_shift(self::$storedQueries);
+        }
+        self::$storedQueries[] = $query;
+        return new static ();
+    }
+
+    public static function hasStoredQuery():bool
+    {
+        return count(self::$storedQueries) > 0;
     }
 
 }
