@@ -34,7 +34,7 @@ namespace Wsudo\PhpQueryBuilder
             return $futures->await($cancellation);
         }
 
-        throw new Exception("Future should pass to " . __FUNCTION__);
+        throw new Exception("valid Future should pass to " . __FUNCTION__);
     }
 
     /**
