@@ -2,7 +2,9 @@
 
 namespace Wsudo\PhpQueryBuilder;
 
+use Wsudo\PhpQueryBuilder\Builders\Query as BuildersQuery;
 use Wsudo\PhpQueryBuilder\Interfaces\BuilderInterface;
+use Wsudo\PhpQueryBuilder\Throwables\Exception;
 
 final class Query
 {
@@ -102,14 +104,20 @@ final class Query
      * @param BuilderInterface $query
      * @return Query
      */
-    public static function addStoredQuery(BuilderInterface $query):self
+    public static function addStoredQuery(BuilderInterface $query):BuilderInterface|BuildersQuery
     {
+
+        if(!self::$storeQueriesEnabled)
+        {
+            return $query;
+        }
+
         if(count(self::$storedQueries) >= self::$maxStoredQueries)
         {
             array_shift(self::$storedQueries);
         }
         self::$storedQueries[] = $query;
-        return new static ();
+        return self::$storedQueries[count(self::$storedQueries) -1];
     }
 
     /**
@@ -141,4 +149,72 @@ final class Query
         return self::$taggedQueries;
     }
 
+    /**
+     * return tagged Query instance or false
+     * 
+     * @param string|int $name
+     * @param mixed $ignore
+     * @throws Exception if tagged Query does not exists and $ignore = true will throw error
+     * @return BuilderInterface|BuildersQuery|bool false if tagged Query does not exists
+     */
+    public static function tagged(string|int $name , $ignore = true):BuilderInterface|BuildersQuery|bool
+    {
+        if(isset(self::$taggedQueries[$name]))
+        {
+            return self::$taggedQueries[$name];
+        }
+        
+        if(!$ignore)
+        {
+            throw new Exception("tagget '" . $name . "' Query is not exists");
+        }
+
+        return false;
+    }
+
+    /**
+     * tag the query/new-query as its name
+     * 
+     * 
+     * @param string|int $name
+     * @param BuilderInterface|null $queryBuilder
+     * @param mixed $replace
+     * @return BuilderInterface
+     */
+    public static function tag(string|int $name , BuilderInterface $queryBuilder = null , $replace = false):BuilderInterface
+    {
+        if(!isset(self::$taggedQueries[$name]))
+        {
+            if($queryBuilder = null)
+            {
+                self::$taggedQueries[$name] = Query::newFullQueryBuilderInterface();
+                return self::$taggedQueries[$name];
+            }
+            self::$taggedQueries[$name] = $queryBuilder;
+            return self::$taggedQueries[$name];
+        }
+
+        if($queryBuilder != null && !$replace)
+        {
+            trigger_error("tagged query is seted and will be return , because of replacement is passed as false !", E_USER_WARNING);
+            return self::$taggedQueries[$name];
+        }
+
+        if($queryBuilder == null)
+        {
+            return self::$taggedQueries[$name];
+        }
+
+        self::$taggedQueries[$name] = $queryBuilder;
+        return self::$taggedQueries[$name];
+    }
+
+    /**
+     * create and set new FullQueryBuilder Instance and return it out
+     * @return BuildersQuery
+     */
+    public static function newFullQueryBuilderInterface():BuildersQuery
+    {
+        return self::addStoredQuery(new BuildersQuery());
+    }
 }
