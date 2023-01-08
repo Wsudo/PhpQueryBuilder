@@ -5,6 +5,7 @@ namespace Wsudo\PhpQueryBuilder;
 use Wsudo\PhpQueryBuilder\Builders\Query as BuildersQuery;
 use Wsudo\PhpQueryBuilder\Builders\Transaction;
 use Wsudo\PhpQueryBuilder\Throwables\Exception;
+use Wsudo\PhpQueryBuilder\Types\TransactionType;
 
 final class Query
 {
@@ -329,9 +330,9 @@ final class Query
         return self::addStoredQuery(new BuildersQuery());
     }
 
-    public static function newTransaction():Transaction
+    public static function newTransaction(TransactionType $transactionType = null):Transaction
     {
-        return self::addStoredTransaction(new Transaction());
+        return self::addStoredTransaction(new Transaction($transactionType));
     }
 
     public static function debug()

@@ -12,8 +12,11 @@ namespace Wsudo\PhpQueryBuilder
     use Amp\Internal\Cancellable;
     use Amp\TimeoutCancellation;
     use Wsudo\PhpQueryBuilder\Builders\Query;
+    use Wsudo\PhpQueryBuilder\Builders\Transaction;
     use Wsudo\PhpQueryBuilder\Query as PhpQueryBuilderQuery;
     use Wsudo\PhpQueryBuilder\Throwables\Exception;
+    use Wsudo\PhpQueryBuilder\Types\TransactionType;
+
     use function Amp\Future\awaitAll as ampAwaitAll;
     use function Amp\async as ampAsync;
 
@@ -74,6 +77,11 @@ namespace Wsudo\PhpQueryBuilder
         }
 
         return PhpQueryBuilderQuery::tag($tagName);
+    }
+
+    function transaction(TransactionType $transactionType = null):Transaction
+    {
+        return PhpQueryBuilderQuery::newTransaction($transactionType);
     }
 }
 
