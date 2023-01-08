@@ -9,6 +9,7 @@ namespace Wsudo\PhpQueryBuilder
 
     use Amp\Internal\Cancellable;
     use Amp\TimeoutCancellation;
+    use Wsudo\PhpQueryBuilder\Throwables\Exception;
     use function Amp\Future\awaitAll as ampAwaitAll;
     use function Amp\async as ampAsync;
 
@@ -23,6 +24,8 @@ namespace Wsudo\PhpQueryBuilder
         {
             return $futures->await($cancellation);
         }
+
+        throw new Exception("Future should pass to " . __FUNCTION__);
     }
 
     function async(\Closure $callable , ...$args):Future
