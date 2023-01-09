@@ -427,6 +427,22 @@ final class Query
     }
     public static function orWhereNotBetween($column, $first, $second): BuildersQuery
     {
-        return self::newFullQueryBuilder()->whereNotBetween($column, $first , $second);
+        return self::newFullQueryBuilder()->orWhereNotBetween($column, $first , $second);
+    }
+    public static function whereNull($column, string $bool): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->whereNull($column, $bool);
+    }
+    public static function orWhereNull($column): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->orWhereNull($column);
+    }
+    public static function whereNotNull($column, string $bool): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->whereNotNull($column, $bool);
+    }
+    public static function orWhereNotNull($column): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->orWhereNotNull($column);
     }
 }
