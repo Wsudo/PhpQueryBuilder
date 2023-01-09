@@ -2,8 +2,10 @@
 
 namespace Wsudo\PhpQueryBuilder;
 
+use Amp\Future;
 use Wsudo\PhpQueryBuilder\Builders\Query as BuildersQuery;
 use Wsudo\PhpQueryBuilder\Builders\Transaction;
+use Wsudo\PhpQueryBuilder\Interfaces\QueryBuilderInterface;
 use Wsudo\PhpQueryBuilder\Throwables\Exception;
 use Wsudo\PhpQueryBuilder\Types\TransactionType;
 
@@ -299,7 +301,7 @@ final class Query
         if(!isset(self::$taggedQueries[$name])) {
             if($queryBuilder == null)
             {
-                self::$taggedQueries[$name] = self::newFullQueryBuilderInterface();
+                self::$taggedQueries[$name] = self::newFullQueryBuilder();
                 return self::$taggedQueries[$name];
             }
             self::$taggedQueries[$name] = $queryBuilder;
@@ -325,7 +327,7 @@ final class Query
      * create and set new FullQueryBuilder Instance and return it out
      * @return BuildersQuery
      */
-    public static function newFullQueryBuilderInterface():BuildersQuery
+    public static function newFullQueryBuilder():BuildersQuery
     {
         return self::addStoredQuery(new BuildersQuery());
     }
@@ -346,4 +348,54 @@ final class Query
     {
         return self::$taggedQueries;
     }
+
+    public static function database(string|array $database):BuildersQuery
+    {
+        return self::newFullQueryBuilder()->database($database);
+    }
+    public static function table(string|array $table):BuildersQuery
+    {
+        return self::newFullQueryBuilder()->table($table);
+    }
+    public static function select(string|array $columns): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->select($columns);
+    }
+    public static function count():BuildersQuery
+    {
+        return self::newFullQueryBuilder()->count();
+    }
+    public static function from(string|array $databaseAndTable): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->from($databaseAndTable);
+    }
+    public static function delete(): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->delete();
+    }
+    public static function set(string|array $column, string $value): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->set($column , $value);
+    }
+    public static function insert(string|array $column , string $value): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->insert($column , $value);
+    }
+    public static function where(string|\Closure|Future|QueryBuilderInterface $column, $operator, $value, string $bool): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->where($column, $operator, $value, $bool);
+    }
+    public static function orWhere(string|\Closure|Future|QueryBuilderInterface $column, $operator, $value): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->orWhere($column, $operator, $value);
+    }
+    public static function whereNot($column, $value, string $bool): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->orWhere($column, $value, $bool);
+    }
+    public static function orWhereNot($column, $value): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->orWhereNot($column, $value);
+    }
+
 }

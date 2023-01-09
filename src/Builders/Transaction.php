@@ -169,7 +169,7 @@ class Transaction implements TransactionInterface
      * 
      * NOTE: this will done as non-blocking (async)
      * @param DatabaseType $databaseType
-     * @return ReadyQuery
+     * @return Future
      */
     public function asyncBuild(DatabaseType $databaseType):Future 
     {

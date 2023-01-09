@@ -73,7 +73,7 @@ namespace Wsudo\PhpQueryBuilder
     {
         if($tagName == null)
         {
-            return PhpQueryBuilderQuery::newFullQueryBuilderInterface();
+            return PhpQueryBuilderQuery::newFullQueryBuilder();
         }
 
         return PhpQueryBuilderQuery::tag($tagName);
