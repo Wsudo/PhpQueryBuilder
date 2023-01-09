@@ -397,5 +397,36 @@ final class Query
     {
         return self::newFullQueryBuilder()->orWhereNot($column, $value);
     }
-
+    public static function whereIn(string $column, array $value, string $bool): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->whereIn($column, $value,$bool);
+    }
+    public static function whereNotIn(string $column, array $value, string $bool): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->whereNotIn($column, $value,$bool);
+    }
+    public static function orWhereIn(string $column, array $value): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->orWhereIn($column, $value);
+    }
+    public static function orWhereNotIn(string $column, array $value): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->orWhereNotIn($column, $value);
+    }
+    public static function whereBetween(string|\Closure|Future|QueryBuilderInterface $column, string|\Closure|Future|QueryBuilderInterface $first, string|\Closure|Future|QueryBuilderInterface $second, string $bool , bool $not): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->whereBetween($column, $first , $second , $bool , $not);
+    }
+    public static function orWhereBetween($column, $first, $second): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->orWhereBetween($column, $first , $second);
+    }
+    public static function whereNotBetween($column, $first, $second, string $bool): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->whereNotBetween($column, $first , $second , $bool);
+    }
+    public static function orWhereNotBetween($column, $first, $second): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->whereNotBetween($column, $first , $second);
+    }
 }
