@@ -21,5 +21,19 @@ enum JoinType
         };
     }
 
+    public static function toType(string|JoinType $joinOnType)
+    {
+        if ($joinOnType instanceof JoinType) {
+            return $joinOnType;
+        }
+
+        return match (mb_strtolower($joinOnType)) {
+            "inner" => JoinType::Inner,
+            "left" => JoinType::Left,
+            "right" => JoinType::Right,
+            "cross" => JoinType::Cross,
+            default => throw new Exception("joinType not supported") ,
+        };
+    }
 }
 
