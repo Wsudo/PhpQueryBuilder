@@ -1,7 +1,9 @@
 <?php
 
 namespace Wsudo\PhpQueryBuilder\Types;
-use Wsudo\PhpQueryBuilder\Exceptions\DatabaseTypeNotSupportedException;
+
+use Exception;
+use Wsudo\PhpQueryBuilder\Throwables\DatabaseTypeNotSupportedException as ThrowablesDatabaseTypeNotSupportedException;
 
 enum DatabaseType
 {
@@ -17,7 +19,7 @@ enum DatabaseType
             DatabaseType::SQLITE => "SQLITE" ,
             DatabaseType::POSTGRESQL => "POSTGRESQL" ,
             DatabaseType::MSSQL => "MSSQL" ,
-            default => throw new DatabaseTypeNotSupportedException("database type not support")
+            default => throw new ThrowablesDatabaseTypeNotSupportedException("database type not support")
         };
     }
 }

@@ -15,7 +15,7 @@ enum OrderType
             OrderType::NONE => "NONE" ,
             OrderType::DESC => "DESC" ,
             OrderType::ASC => "ASC" ,
-            default => throw new Exception("order type not supported !")
+            default => throw new Exception("order type not supported")
         };
     }
 }

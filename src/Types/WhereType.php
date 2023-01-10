@@ -28,7 +28,7 @@ enum WhereType
             WhereType::NotBetween => "NotBetween" ,
             WhereType::IsNull => "IsNull" ,
             WhereType::IsNotNull => "IsNotNull" ,
-            default => throw new Exception("whereType not supported !")
+            default => throw new Exception("whereType not supported")
         };
     }
 }
