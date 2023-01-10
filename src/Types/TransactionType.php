@@ -20,4 +20,19 @@ enum TransactionType
             default => throw new Exception("transaction type not supported")
         };
     }
+
+    public static function toType(string|TransactionType $transactionType)
+    {
+        if ($transactionType instanceof TransactionType) {
+            return $transactionType;
+        }
+
+        return match (mb_strtolower($transactionType)) {
+            "read_uncommit" => TransactionType::READ_UNCOMMITED,
+            "read_committed" => TransactionType::READ_COMMITTED,
+            "repeatable_committed" => TransactionType::REPEATABLE_READ,
+            "serilizable" => TransactionType::SERIALIZABLE,
+            default => throw new Exception("transaction type not supported"),
+        };
+    }
 }
