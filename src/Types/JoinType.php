@@ -21,13 +21,13 @@ enum JoinType
         };
     }
 
-    public static function toType(string|JoinType $joinOnType)
+    public static function toType(string|JoinType $joinType)
     {
-        if ($joinOnType instanceof JoinType) {
-            return $joinOnType;
+        if ($joinType instanceof JoinType) {
+            return $joinType;
         }
 
-        return match (mb_strtolower($joinOnType)) {
+        return match (mb_strtolower($joinType)) {
             "inner" => JoinType::Inner,
             "left" => JoinType::Left,
             "right" => JoinType::Right,
