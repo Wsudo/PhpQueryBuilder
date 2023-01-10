@@ -369,6 +369,10 @@ final class Query
     {
         return self::newFullQueryBuilder()->from($databaseAndTable);
     }
+    public static function to(string|array $databaseAndTable): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->to($databaseAndTable);
+    }
     public static function delete(): BuildersQuery
     {
         return self::newFullQueryBuilder()->delete();

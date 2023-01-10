@@ -13,6 +13,7 @@ interface QueryBuilderInterface extends BuilderInterface
     public function select(string|array $columns): self;
     public function count():self;
     public function from(string|array $databaseAndTable): self;
+    public function to(string|array $databaseAndTable): self;
     public function delete(): self;
     public function set(string|array $column, string $value): self;
     public function insert(string|array $column , string $value): self;

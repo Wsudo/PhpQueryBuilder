@@ -175,6 +175,17 @@ class Query implements QueryBuilderInterface
     }
 
     /**
+     * set database and table which you want to insert or update to it
+     * @param string|array $databaseAndTable
+     * @return Query
+     */
+    public function to(string|array $databaseAndTable): self
+    {
+        $this->table($databaseAndTable);
+        return $this;
+    }
+
+    /**
      * set the query type as DELETE query
      * 
      * NOTE: this method used just for change select query to the delete query
