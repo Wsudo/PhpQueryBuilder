@@ -48,7 +48,7 @@ class Query implements QueryBuilderInterface
      * 
      * @param string|array $databaseName  'database' or 'database.table' or ['database' , 'table']
      * @throws InvalidValueError
-     * @return Query self instance
+     * @return self self instance
      */
     public function database(string|array $databaseName): self
     {
@@ -90,7 +90,7 @@ class Query implements QueryBuilderInterface
     /**
      * set the working table to the QueryBuilder
      * @param string|array $tableName 'my_table' or 'database.table' or ['database' , 'table']
-     * @return Query
+     * @return self
      */
     public function table(string|array $tableName): self
     {
@@ -116,7 +116,7 @@ class Query implements QueryBuilderInterface
      * set which column(s) do you want to select
      * @param string|array $columns 'id' or ['id' ,'name']
      * @throws InvalidValueError
-     * @return Query
+     * @return self
      */
     public function select(string|array $columns): self
     {
@@ -154,7 +154,7 @@ class Query implements QueryBuilderInterface
      * IMPORTANT : this method will be clean all selected Columns from the queryString
      * IMPORTANT : this method will be use just for counting the rows in the table and nothing else !!!
      * 
-     * @return Query
+     * @return self
      */
     public function count(): self
     {
@@ -166,7 +166,7 @@ class Query implements QueryBuilderInterface
     /**
      * set database and table which you want to select rows from !
      * @param string|array $databaseAndTable 'database.table' or 'table' or ['database' , 'table']
-     * @return Query
+     * @return self
      */
     public function from(string|array $databaseAndTable): self
     {
@@ -177,7 +177,7 @@ class Query implements QueryBuilderInterface
     /**
      * set database and table which you want to insert or update to it
      * @param string|array $databaseAndTable
-     * @return Query
+     * @return self
      */
     public function to(string|array $databaseAndTable): self
     {
@@ -189,7 +189,7 @@ class Query implements QueryBuilderInterface
      * set the query type as DELETE query
      * 
      * NOTE: this method used just for change select query to the delete query
-     * @return Query
+     * @return self
      */
     public function delete(): self
     {
@@ -208,7 +208,7 @@ class Query implements QueryBuilderInterface
      * @param string|array $columnName 'name' or ['name' => 'John']
      * @param string|null $value value of the column
      * @throws InvalidValueError
-     * @return Query
+     * @return self
      */
     public function set(string|array $column, string $value = null): self
     {
@@ -254,7 +254,7 @@ class Query implements QueryBuilderInterface
      * @param string|array $column 'name' or ['name' => 'John']
      * @param string|null $value $value value of the column
      * @throws InvalidValueError
-     * @return Query
+     * @return self
      */
     public function insert(string|array $column , string $value = null): self
     {
