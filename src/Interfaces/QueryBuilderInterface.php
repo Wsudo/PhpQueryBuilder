@@ -36,6 +36,7 @@ interface QueryBuilderInterface extends BuilderInterface
     public function whereSub(\Closure|Future|QueryBuilderInterface $queryBuilder, string $bool): self;
     public function orWhereSub(\Closure|Future|QueryBuilderInterface $queryBuilder): self;
     public function havingFunc(string $functionName,array|string|int|float $arguments, string|array $operator, string|array $values): self;
+    public function havingRaw(string $sql, array $paramBindings): self;
     public function orderBy(string|array $columns): self;
     public function orderByDesc(string|array $columns): self;
     public function orderByAsc(string|array $columns): self;
