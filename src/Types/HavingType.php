@@ -18,4 +18,19 @@ enum HavingType
             default => throw new Exception("havingType not supported"),
         };
     }
+
+    public static function toType(string|HavingType $havingType)
+    {
+        if ($havingType instanceof HavingType) {
+            return $havingType;
+        }
+
+        return match (mb_strtolower($havingType)) {
+            "functional" => HavingType::Functional,
+            "functionalwithoutargs" => HavingType::FunctionalWithoutArgs,
+            "functional_without_args" => HavingType::FunctionalWithoutArgs,
+            "raw" => HavingType::Raw,
+            default => throw new Exception("havingType not supported")
+        };
+    }
 }
