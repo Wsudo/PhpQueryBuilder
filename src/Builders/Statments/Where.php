@@ -6,7 +6,7 @@ use Wsudo\PhpQueryBuilder\Interfaces\QueryBuilderInterface;
 
 trait Where
 {
-    public function where(string|\Closure|Future|QueryBuilderInterface $column, $operator, $value, string $bool): self
+    public function where(string|\Closure|Future|QueryBuilderInterface $column, $operator = null, $value = null, string $bool): self
     {
         return $this;
     }
