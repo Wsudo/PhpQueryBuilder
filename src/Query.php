@@ -445,4 +445,56 @@ final class Query
     {
         return self::newFullQueryBuilder()->orWhereNotNull($column);
     }
+    public static function whereSub(\Closure|Future|QueryBuilderInterface $queryBuilder, string $bool): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->whereSub($queryBuilder , $bool);
+    }
+    public static function orWhereSub(\Closure|Future|QueryBuilderInterface $queryBuilder): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->orWhereSub($queryBuilder);
+    }
+    public static function havingFunc(string $functionName,array|string|int|float $arguments, string|array $operator, string|array $values): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->havingFunc($functionName , $arguments , $operator , $values);
+    }
+    public static function orderBy(string|array $columns): BuildersQuery
+    {
+        return self::newFullQueryBuilder()->orderBy($columns);
+    }
+    public static function join(string $table, $first, $operator, $second, $type, $where = false):BuildersQuery
+    {
+        return self::newFullQueryBuilder()->join( $table, $first, $operator, $second, $type, $where);
+    }
+    public static function innerJoin(string $table, $first, $operator, $second):BuildersQuery
+    {
+        return self::newFullQueryBuilder()->innerJoin( $table, $first, $operator, $second);
+    }
+    public static function leftJoin(string $table, $first, $operator, $second):BuildersQuery
+    {
+        return self::newFullQueryBuilder()->leftJoin( $table, $first, $operator, $second);
+    }
+    public static function rightJoin(string $table, $first, $operator, $second):BuildersQuery
+    {
+        return self::newFullQueryBuilder()->rightJoin( $table, $first, $operator, $second);
+    }
+    public static function crossJoin(string $table, $first, $operator, $second):BuildersQuery
+    {
+        return self::newFullQueryBuilder()->crossJoin( $table, $first, $operator, $second);
+    }
+    public static function innerJoinWhere(string $table, $first, $operator, $second):BuildersQuery
+    {
+        return self::newFullQueryBuilder()->innerJoinWhere( $table, $first, $operator, $second);
+    }
+    public static function leftJoinWhere(string $table, $first, $operator, $second):BuildersQuery
+    {
+        return self::newFullQueryBuilder()->leftJoinWhere( $table, $first, $operator, $second);
+    }
+    public static function rightJoinWhere(string $table, $first, $operator, $second):BuildersQuery
+    {
+        return self::newFullQueryBuilder()->rightJoinWhere( $table, $first, $operator, $second);
+    }
+    public static function crossJoinWhere(string $table, $first, $operator, $second):BuildersQuery
+    {
+        return self::newFullQueryBuilder()->crossJoinWhere( $table, $first, $operator, $second);
+    }
 }
