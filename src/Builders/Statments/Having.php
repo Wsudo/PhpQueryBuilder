@@ -31,6 +31,7 @@ trait Having
 
     public function havingRaw(string $sql, array $paramBindings): self
     {
+        $this->isSelect = true;
         if(empty($sql))
         {
             throw new InvalidValueError("sql argument must not empty");
