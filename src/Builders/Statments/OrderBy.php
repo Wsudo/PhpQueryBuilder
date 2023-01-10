@@ -3,6 +3,7 @@
 namespace Wsudo\PhpQueryBuilder\Builders\Statments;
 
 use Wsudo\PhpQueryBuilder\Throwables\InvalidValueError;
+use Wsudo\PhpQueryBuilder\Types\OrderType;
 
 trait OrderBy
 {
@@ -19,6 +20,11 @@ trait OrderBy
     public function orderBy(string|array $columns = ['id']): self
     {
         $this->isSelect = true;
+
+        if($this->orderType == null)
+        {
+            $this->orderType = OrderType::NONE;
+        }
         
         if(is_string($columns))
         {
@@ -55,7 +61,7 @@ trait OrderBy
      */
     public function orderByDesc(string|array $columns): self
     {
-        $this->orderType = "DESC";
+        $this->orderType = OrderType::DESC;
         return $this->orderBy($columns);
     }
 
@@ -69,7 +75,7 @@ trait OrderBy
      */
     public function orderByAsc(string|array $columns): self
     {
-        $this->orderType = "ASC";
+        $this->orderType = OrderType::ASC;
         return $this->orderBy($columns);
     }
 }

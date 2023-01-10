@@ -14,6 +14,7 @@ use Wsudo\PhpQueryBuilder\Interfaces\QueryBuilderInterface;
 use Wsudo\PhpQueryBuilder\ReadyQuery;
 use Wsudo\PhpQueryBuilder\Throwables\InvalidValueError;
 use Wsudo\PhpQueryBuilder\Types\DatabaseType;
+use Wsudo\PhpQueryBuilder\Types\OrderType;
 
 class Query implements QueryBuilderInterface
 {
@@ -34,7 +35,7 @@ class Query implements QueryBuilderInterface
     public int $limit;
     public int $offset;
     public array $orders = [];
-    public string $orderType;
+    public OrderType $orderType;
     public array $groups = [];
 
     public bool $isCount = false;
