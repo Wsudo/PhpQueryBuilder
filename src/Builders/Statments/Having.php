@@ -28,4 +28,30 @@ trait Having
 
         return $this;
     }
+
+    public function havingRaw(string $sql, array $paramBindings): self
+    {
+        if(empty($sql))
+        {
+            throw new InvalidValueError("sql argument must not empty");
+        }
+
+        if(empty($paramBindings))
+        {
+            throw new InvalidValueError("havingRaw should have at least one paramBinding");
+        }
+
+        foreach($paramBindings as $index => $paramBinding)
+        {
+            if(!is_int($index) || $index < 0)
+            {
+                throw new InvalidValueError("query builder does not support ColumnBinding");
+            }
+        }
+
+        $this->havings[] = ['type' => HavingType::Raw, 'sql' => $sql, 'bindings' => $paramBinding];
+
+        return $this;
+
+    }
 }
