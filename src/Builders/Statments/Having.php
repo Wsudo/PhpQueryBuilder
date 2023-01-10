@@ -3,6 +3,7 @@
 namespace Wsudo\PhpQueryBuilder\Builders\Statments;
 
 use Wsudo\PhpQueryBuilder\Throwables\InvalidValueError;
+use Wsudo\PhpQueryBuilder\Types\HavingType;
 
 trait Having
 {
@@ -21,7 +22,7 @@ trait Having
             throw new InvalidValueError("sql function name must be valid ID name , string and not be empty , invalid passed to " . __METHOD__);
         }
 
-        $type = empty($arguments) ? "functional_without_argument" : "functionoal";
+        $type = empty($arguments) ? HavingType::FunctionalWithoutArgs : HavingType::Functional;
 
         $this->havings[] = ['type' => $type, 'function' => $functionName, 'arguments' => $arguments, 'operator' => $operator, 'values' => $values, 'bindings' => $values];
 
